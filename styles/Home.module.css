@@ -2,8 +2,10 @@
   padding: 0 2rem;
 }
 
-.main {
-  padding: 4rem;
+.cards {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .card {
@@ -12,23 +14,24 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   position: relative;
+  width: 250px;
+  flex-grow: 1;
+  flex-shrink: 0;
 }
-.card:hover{
+.card:hover {
   border-color: blue;
 }
-.card a{
+.card a {
   text-decoration: none;
   cursor: pointer;
   border: 2px solid transparent;
   transition: border-color 200ms;
 }
-.card a::before{
-  content: "";
+.card a::before {
+  content: '';
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
 }
-
-

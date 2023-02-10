@@ -13,19 +13,22 @@ export default function Home({ posts }) {
       </Head>
       <main className={styles.main}>
         <h1>Blog</h1>
-        {posts.map((post, index) => (
-          <section key={index} className={styles.card}>
-            <div>
-              <h2>
-                <Link href={`/posts/${post.slug}`}>
-                  <a className={styles.action}>{post.title}</a>
-                </Link>
-              </h2>
-              <div>{post.date}</div>
-            </div>
-            <p>{post.description}</p>
-          </section>
-        ))}
+
+        <div className={styles.cards}>
+          {posts.map((post, index) => (
+            <section key={index} className={styles.card}>
+              <div>
+                <h2>
+                  <Link href={`/posts/${post.slug}`}>
+                    <a className={styles.action}>{post.title}</a>
+                  </Link>
+                </h2>
+                <div>{post.date}</div>
+              </div>
+              <p>{post.description}</p>
+            </section>
+          ))}
+        </div>
       </main>
     </div>
   );
