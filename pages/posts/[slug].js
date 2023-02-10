@@ -1,58 +1,62 @@
-import ReactMarkdown from 'react-markdown'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism'
-import { getAllPublished, getSingleBlogPostBySlug } from "../../lib/notion";
-import styles from '../../styles/Home.module.css'
+import ReactMarkdown from 'react-markdown';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { vscDarkPlus } from 'react-syntax-highlighter/dist/cjs/styles/prism';
+import { getAllPublished, getSingleBlogPostBySlug } from '../../lib/notion';
 
 const CodeBlock = ({ language, codestring }) => {
-return (
+  return (
     <SyntaxHighlighter language={language} style={vscDarkPlus} PreTag="div">
-        {codestring}
+      {codestring}
     </SyntaxHighlighter>
-)
-}
+  );
+};
 const Post = ({ post }) => {
   return (
-      <section className={styles.container}> 
+    <main>
+      <section className="flex flex-col gap-3">
         <h2>{post.metadata.title}</h2>
         <span>{post.metadata.date}</span>
-        <p style={{color: "gray"}}>{post.metadata.tags.join(', ')}</p>
+        <p style={{ color: 'gray' }}>{post.metadata.tags.join(', ')}</p>
         <ReactMarkdown
-        components={{
-            code({node, inline, className, children, ...props}) {
-            const match = /language-(\w+)/.exec(className || '')
-            return !inline && match ? (
+          components={{
+            code({ node, inline, className, children, ...props }) {
+              const match = /language-(\w+)/.exec(className || '');
+              return !inline && match ? (
                 <CodeBlock
-                codestring={String(children).replace(/\n$/, '')}
-                language={match[1]}
+                  codestring={String(children).replace(/\n$/, '')}
+                  language={match[1]}
                 />
-            ) : (
+              ) : (
                 <code className={className} {...props}>
-                {children}
+                  {children}
                 </code>
-            )
-            }
-        }}>{post.markdown}</ReactMarkdown>
+              );
+            },
+          }}
+        >
+          {post.markdown}
+        </ReactMarkdown>
       </section>
+    </main>
   );
 };
 
 export const getStaticProps = async ({ params }) => {
-  const post = await getSingleBlogPostBySlug(params.slug)
+  const post = await getSingleBlogPostBySlug(params.slug);
   return {
     props: {
       post,
     },
-    revalidate: 60
+    revalidate: 60,
   };
 };
 
 export const getStaticPaths = async () => {
-  const posts = await getAllPublished()
+  const posts = await getAllPublished();
   const paths = posts.map(({ slug }) => ({ params: { slug } }));
   return {
     paths,
-    fallback: "blocking",
+    fallback: 'blocking',
   };
 };
 
