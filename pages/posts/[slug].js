@@ -11,12 +11,16 @@ const CodeBlock = ({ language, codestring }) => {
   );
 };
 const Post = ({ post }) => {
+  const { id, date, title, tags } = post.metadata;
+
+  const { markdown } = post;
+
   return (
     <main>
       <section className="flex flex-col gap-3">
-        <h2>{post.metadata.title}</h2>
-        <span>{post.metadata.date}</span>
-        <p style={{ color: 'gray' }}>{post.metadata.tags.join(', ')}</p>
+        <h2>{title}</h2>
+        <span>{date}</span>
+        <p style={{ color: 'gray' }}>{tags.join(', ')}</p>
         <ReactMarkdown
           components={{
             code({ node, inline, className, children, ...props }) {
@@ -34,7 +38,7 @@ const Post = ({ post }) => {
             },
           }}
         >
-          {post.markdown}
+          {markdown}
         </ReactMarkdown>
       </section>
     </main>

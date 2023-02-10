@@ -1,4 +1,8 @@
 import Link from 'next/link';
+import PostCard from '../components/PostCard';
+import Section1 from '../components/Sect1';
+import Sect2 from '../components/Sect2';
+import Sect3 from '../components/Sect3';
 import { getAllPublished } from '../lib/notion';
 import styles from '../styles/Home.module.css';
 
@@ -6,22 +10,12 @@ export default function Home({ posts }) {
   if (!posts) return <h1>No posts</h1>;
   return (
     <main>
+      <Sect3 data={posts} />
+      <Section1 data={posts} />
+      <Sect2 data={posts} />
       <div className={styles.cards}>
         {posts.map((post, index) => (
-          <section
-            key={index}
-            className="flex flex-col gap-3 w-[200px] flex-grow flex-shrink-0 bg-white shadow-md p-3 rounded-md"
-          >
-            <div className="flex flex-col gap-2">
-              <h2 className="text-xl font-bold">
-                <Link href={`/posts/${post.slug}`}>
-                  <a className={styles.action}>{post.title}</a>
-                </Link>
-              </h2>
-              <div className="text-gray-500 text-sm">{post.date}</div>
-            </div>
-            <p>{post.description}</p>
-          </section>
+          <PostCard post={post} key={index} />
         ))}
       </div>
     </main>
