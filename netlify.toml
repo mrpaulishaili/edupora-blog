@@ -3,5 +3,5 @@
   publish = ".next"
   
 [template.environment]
-  NOTION_TOKEN = "Set notion token"
-  DATABASE_ID = "Set the database ID"
+  NOTION_TOKEN = "secret_voqcJDGZQ3ANOSjd1YWGKkNTrTf31h6MJemRQ7GsIQw"
+  DATABASE_ID = "9cc748ca904948aa8c4632a7a92a7826"
