@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Logo from './Logo';
 
 export default function header() {
@@ -14,6 +15,10 @@ export default function header() {
           </nav>
 
           <div className="flex gap-3 items-center">
+            {' '}
+            <Link href="https://bit.ly/edupora" className="p-2 border">
+              Get App
+            </Link>
             <div className="icon search-icon border border-green-200 p-1 rounded-full h-9 w-9 flex items-center justify-center hover:bg-green-600 cursor-pointer mr-4 hover:text-white"></div>
           </div>
         </div>
