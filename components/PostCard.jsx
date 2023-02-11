@@ -24,7 +24,7 @@ const PostCard = ({ post }) => {
             </a>
           </Link>
           <span className="flex flex-row ml-auto laptop:mouse:invisible laptop:mouse:group-hover:visible">
-            <Link href={`/posts/${post.link}`} target="_blank">
+            <Link href={post.link} target="_blank">
               <a className="flex-row items-center border font-bold cursor-pointer select-none focus-outline justify-center flex relative mr-2 px-3 text-xs rounded-xl">
                 <span>Read article</span>
                 <svg
