@@ -1,37 +1,21 @@
-import { ImFacebook, ImTwitter, ImYoutube } from 'react-icons/im';
 import Link from 'next/link';
+import Logo from './Logo';
 
 export default function header() {
   return (
-    <header className="bg-gray-50">
-      <div className="xl:container xl:mx-auto flex flex-col items-center sm:flex-row sm:justify-between text-center py-3">
-        <div className="md:flex-none w-96 order-2 sm:order-1 flex justify-center py-4 sm:py-0">
-          <input type="text" className="input-text" placeholder="Search..." />
+    <header className="w-full">
+      <div className="py-2 flex shadow-md justify-between items-center w-full px-[2%]">
+        <div className="flex gap-5 items-center">
+          <Logo />
         </div>
-        <div className="shrink w-80 sm:order-2">
-          <Link href={'/'}>
-            <a className="text-3xl mb-4 font-bold text-center">
-              <span className="text-green-700"> EDUPORA </span>Blog
-            </a>
-          </Link>
-        </div>
-        <div className="w-96 order-3 flex justify-center">
-          <div className="flex gap-6">
-            <Link href={'/'}>
-              <a>
-                <ImFacebook color="#888888" />
-              </a>
-            </Link>
-            <Link href={'/'}>
-              <a>
-                <ImTwitter color="#888888" />
-              </a>
-            </Link>
-            <Link href={'/'}>
-              <a>
-                <ImYoutube color="#888888" />
-              </a>
-            </Link>
+
+        <div className="flex gap-5 items-center">
+          <nav className="hidden md:flex gap-3 font-bold text-gray-500 text-sm">
+            jj
+          </nav>
+
+          <div className="flex gap-3 items-center">
+            <div className="icon search-icon border border-green-200 p-1 rounded-full h-9 w-9 flex items-center justify-center hover:bg-green-600 cursor-pointer mr-4 hover:text-white"></div>
           </div>
         </div>
       </div>
