@@ -16,6 +16,7 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
     "react-markdown": "^8.0.3",
+    "react-notion-x": "^6.15.8",
     "react-syntax-highlighter": "^15.5.0",
     "swiper": "^9.0.4"
   },
